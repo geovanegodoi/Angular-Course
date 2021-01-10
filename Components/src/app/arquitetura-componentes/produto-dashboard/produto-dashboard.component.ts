@@ -16,7 +16,7 @@ export class ProdutoDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.criarListadeProdutos();
   }
-
+  
   private criarListadeProdutos() {
     this.produtos = [{
       id: 1,
@@ -62,4 +62,7 @@ export class ProdutoDashboardComponent implements OnInit {
     }];
   }
 
+  mudarStatus(event: Produto) {
+    event.ativo = !event.ativo;
+  }
 }
