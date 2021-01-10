@@ -8,10 +8,13 @@ import { APP_BASE_HREF } from '@angular/common';
 
 const rootRouterConfig: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full'},
-    { path: 'home', component: HomeComponent},
-    { path: 'sobre', component: SobreComponent },
+    { path: 'home'    , component: HomeComponent     },
+    { path: 'sobre'   , component: SobreComponent    },
     { path: 'cadastro', component: CadastroComponent },
-    { path: 'contato', component: ContatoComponent }
+    { path: 'contato' , component: ContatoComponent  },
+    { path: 'produtos', loadChildren: () => 
+                            import('./arquitetura-componentes/produto.module')
+                            .then(m => m.ProdutoModule) }
 ];
 
 @NgModule({
