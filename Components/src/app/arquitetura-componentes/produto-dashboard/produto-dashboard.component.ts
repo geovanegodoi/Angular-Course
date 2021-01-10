@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Observable } from 'rxjs';
+import { fromEvent } from 'rxjs';
+import { ProdutoDetalheComponent } from '../componentes/produto-card-detalhe.component';
+import { ProdutoCountComponent } from '../componentes/produto-count.component';
 import { Produto } from '../produto';
 
 @Component({
@@ -7,16 +11,36 @@ import { Produto } from '../produto';
   styles: [
   ]
 })
-export class ProdutoDashboardComponent implements OnInit {
+export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
 
   produtos: Produto[];
+
+  @ViewChild('teste', {static: false}) mensagemTela: ElementRef;
+  @ViewChild(ProdutoCountComponent, {static: false}) contador: ProdutoCountComponent;
+  @ViewChildren(ProdutoDetalheComponent) cards: QueryList<ProdutoDetalheComponent>;
   
   constructor() { }
 
   ngOnInit(): void {
     this.criarListadeProdutos();
   }
-  
+
+  ngAfterViewInit(): void {
+    let clickTexto: Observable<any> = fromEvent(this.mensagemTela.nativeElement, 'click');
+    clickTexto.subscribe(() => {
+      alert('clicou no texto!!!');
+      return;
+    });
+
+    console.log('Objeto do contador : ' , this.contador.produtos);
+
+    console.log(this.cards);
+
+    this.cards.forEach(c => {
+      console.log(c.produto.nome);
+    });
+  }
+
   private criarListadeProdutos() {
     this.produtos = [{
       id: 1,
