@@ -4,4 +4,39 @@ import { Component } from '@angular/core';
   selector: 'app-menu',
   templateUrl: './menu.component.html'
 })
-export class MenuComponent {}
+export class MenuComponent {
+
+  menus: MenuItem[] = [
+    {
+      link: '/home',
+      name: 'Home',
+      exact: true,
+      admin: false
+    },
+    {
+      link: '/cadastro',
+      name: 'Cadastro',
+      exact: true,
+      admin: false
+    },
+    {
+      link: '/sobre',
+      name: 'Sobre',
+      exact: true,
+      admin: false
+    },
+    {
+      link: '/produtos',
+      name: 'Produtos',
+      exact: false,
+      admin: false
+    },
+  ];
+}
+
+export interface MenuItem {
+  link: string;
+  name: string;
+  exact: boolean;
+  admin: boolean;
+}

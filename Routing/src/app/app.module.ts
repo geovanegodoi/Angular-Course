@@ -5,8 +5,6 @@ import { AppComponent } from './app.component';
 import { NavegacaoModule } from './navegacao/navegacao.module';
 import { RoteamentoModule } from './app.routes';
 import { FormularioModule } from './reactiveForms/formulario.module';
-import { ProdutoDashboardComponent } from './arquitetura-componentes/produto-dashboard/produto-dashboard.component';
-
 @NgModule({
   declarations: [
     AppComponent

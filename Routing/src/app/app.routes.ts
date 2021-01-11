@@ -5,6 +5,7 @@ import { CadastroComponent } from './reactiveForms/cadastro/cadastro.component';
 import { ContatoComponent } from './reactiveForms/contato/contato.component';
 import { NgModule } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
+import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 
 const rootRouterConfig: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -13,8 +14,10 @@ const rootRouterConfig: Routes = [
     { path: 'cadastro', component: CadastroComponent },
     { path: 'contato' , component: ContatoComponent  },
     { path: 'produtos', loadChildren: () => 
-                            import('./arquitetura-componentes/produto.module')
-                            .then(m => m.ProdutoModule) }
+        import('./arquitetura-componentes/produto.module')
+        .then(m => m.ProdutoModule) },
+    
+    { path: '**'      , component: NotFoundComponent }    
 ];
 
 @NgModule({
@@ -23,9 +26,6 @@ const rootRouterConfig: Routes = [
     ],
     exports: [
         RouterModule
-    ],
-    providers: [
-        { provide: APP_BASE_HREF, useValue: '/' }
-    ],
+    ]
 })
 export class RoteamentoModule {}
