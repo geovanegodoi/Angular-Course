@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Observable } from 'rxjs';
 import { fromEvent } from 'rxjs';
-import { ProdutoDetalheComponent } from '../componentes/produto-card-detalhe.component';
-import { ProdutoCountComponent } from '../componentes/produto-count.component';
+import { ProdutoDetalheComponent } from '../produto-detalhe/produto-card-detalhe.component';
+import { ProdutoCountComponent } from '../produto-detalhe/produto-count.component';
 import { Produto } from '../produto';
 import { ProdutoService } from '../services/produto.service';
 
